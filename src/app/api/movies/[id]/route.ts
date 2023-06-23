@@ -1,6 +1,6 @@
 import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server'
-
+export const dynamic = 'auto'
 export async function GET(request: Request, context: { params: any }) {
   const { id: movieId } = context.params
 
