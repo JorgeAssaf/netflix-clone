@@ -18,5 +18,5 @@ export default async function AuthLayout({
     redirect('/')
   }
 
-  return <body>{children}</body>
+  return <body >{children}</body>
 }

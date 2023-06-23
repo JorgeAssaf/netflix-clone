@@ -3,8 +3,10 @@ import { redirect } from "next/navigation"
 
 export default async function SiteLayout({
   children,
+  movieModal,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  movieModal: React.ReactNode
 }) {
   const user = await getCurrentUser()
   if (!user) {
@@ -13,6 +15,8 @@ export default async function SiteLayout({
   return (
     <body>
       {children}
+
+      {movieModal}
     </body>
   )
 }
