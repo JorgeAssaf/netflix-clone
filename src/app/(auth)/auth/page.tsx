@@ -1,33 +1,16 @@
 'use client'
 
-import axios from 'axios'
 import { useCallback, useState, useEffect } from 'react'
-import { NextPageContext } from 'next'
-import { getSession, signIn } from 'next-auth/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import axios from 'axios'
+import { signIn } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 
 import Input from '@/components/Input'
 import { Button } from '@/components/ui/button'
 
-export async function getServerSideProps(context: NextPageContext) {
-  const session = await getSession(context)
-
-  if (session) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    }
-  }
-
-  return {
-    props: {},
-  }
-}
 
 const Auth = () => {
-  const router = useRouter()
+
   const params = useSearchParams()
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
