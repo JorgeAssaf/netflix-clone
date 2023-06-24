@@ -2,16 +2,9 @@
 import { useRouter } from 'next/navigation'
 import { useMovie } from '@/hooks/useMovie'
 import { ArrowLeft } from 'lucide-react'
-import { Metadata, ResolvingMetadata } from 'next'
 
-
-const Watch = ({
-  params: { movieId },
-}: {
-  params: { movieId: string }
-}) => {
+const Watch = ({ params: { movieId } }: { params: { movieId: string } }) => {
   const router = useRouter()
-
 
   const { movie, isError, isLoading } = useMovie(movieId)
 
