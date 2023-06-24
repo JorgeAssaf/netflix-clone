@@ -1,6 +1,6 @@
 import { Metadata, ResolvingMetadata } from 'next'
 
-type Props = {
+interface Props {
   params: { movieId: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }
@@ -13,7 +13,7 @@ export async function generateMetadata(
   const movieId = params.movieId
   console.log(movieId)
   // fetch data
-  const movie = await fetch(`http://localhost:3000/api/movies/${movieId}`)
+  const movie = await fetch(`etflix-clone-tau-opal.vercel.app/api/movies/${movieId}`)
   const res = await movie.json()
   console.log(res)
 
