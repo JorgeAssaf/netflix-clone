@@ -13,7 +13,7 @@ export async function generateMetadata(
   const movieId = params.movieId
   console.log(movieId)
   // fetch data
-  const movie = await fetch(`etflix-clone-tau-opal.vercel.app/api/movies/${movieId}`)
+  const movie = await fetch(`netflix-clone-tau-opal.vercel.app/api/movies/${movieId}`)
   const res = await movie.json()
   console.log(res)
 
