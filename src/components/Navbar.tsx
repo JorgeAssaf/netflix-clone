@@ -15,7 +15,12 @@ const Navbar = () => {
           className='w-28 md:w-36'
         />
       </Link>
-      <Button onClick={() => signOut({ callbackUrl: '/auth' })} size={'lg'} className='m-0' variant={'netflix'}>
+      <Button
+        onClick={() => signOut({ callbackUrl: '/auth' })}
+        size={'lg'}
+        className='m-0'
+        variant={'netflix'}
+      >
         Logout
       </Button>
     </div>

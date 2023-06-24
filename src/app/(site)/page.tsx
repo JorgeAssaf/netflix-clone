@@ -6,7 +6,6 @@ import MovieList from '@/components/MovieList';
 export default async function Home() {
 
   const currentUser = await getCurrentUser();
-  console.log(currentUser);
 
   if (!currentUser) {
     redirect('/auth');
@@ -15,7 +14,7 @@ export default async function Home() {
     <>
       <Navbar />
       <Banner />
-      <MovieList title='Tre' />
+      <MovieList title="Trending Now" />
     </>
   );
 }

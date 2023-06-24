@@ -18,7 +18,7 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        netflix: 'bg-red-600 mt-10 hover:bg-red-700 text-base',
+        netflix: 'bg-red-600 hover:bg-red-700 text-base',
       },
       size: {
         default: 'h-10 px-4 py-2',

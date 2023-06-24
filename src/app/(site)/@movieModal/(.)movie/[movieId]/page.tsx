@@ -1,14 +1,12 @@
 'use client'
 
-import { Play, X } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { PlayIcon, X } from 'lucide-react'
 import Modal from '@/components/Modal'
 import { useMovie } from '@/hooks/useMovie'
-import { useRouter } from 'next/navigation'
-
-
 
 const MovieModal = ({
-  params: { movieId },
+  params: { movieId }
 }: {
   params: { movieId: string }
 }) => {
@@ -26,32 +24,35 @@ const MovieModal = ({
           muted
           loop
           src={movie?.videoUrl}
-          className='w-full brightness-[60%] object-cover h-full'
+          className='h-full w-full object-cover brightness-[60%]'
         />
         <button
           onClick={() => router.back()}
-          className='cursor-pointer absolute top-3 right-3 h-10 w-10 rounded-full bg-black bg-opacity-70 flex items-center justify-center'
+          className='absolute right-3 top-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-black bg-opacity-70'
         >
-          <X className='text-white w-6' />
+          <X className='w-6 text-white' />
         </button>
         <div className='absolute bottom-[10%] left-10'>
-          <p className='text-white text-3xl md:text-4xl h-full lg:text-5xl font-bold mb-8'>
+          <p className='mb-8 h-full text-3xl font-bold text-white md:text-4xl lg:text-5xl'>
             {movie?.title}
           </p>
-          <div className='flex flex-row gap-4 items-center'>
-            <Play />
-            {/* <FavoriteButton movieId={data?.id} /> */}
+          <div
+            onClick={() => router.push(`/watch/${movie?.id}`)}
+            className='flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-white transition hover:bg-neutral-300 lg:h-10 lg:w-10'
+          >
+            <PlayIcon className='w-4 text-black lg:w-6' />
           </div>
+          {/* <FavoriteButton movieId={data?.id} /> */}
         </div>
       </div>
 
       <div className='px-12 py-8'>
-        <div className='flex flex-row items-center gap-2 mb-8'>
-          <p className='text-green-400 font-semibold text-lg'>New</p>
-          <p className='text-white text-lg'>{movie?.duration}</p>
-          <p className='text-white text-lg'>{movie?.genre}</p>
+        <div className='mb-8 flex flex-row items-center gap-2'>
+          <p className='text-lg font-semibold text-green-400'>New</p>
+          <p className='text-lg text-white'>{movie?.duration}</p>
+          <p className='text-lg text-white'>{movie?.genre}</p>
         </div>
-        <p className='text-white text-lg'>{movie?.description}</p>
+        <p className='text-lg text-white'>{movie?.description}</p>
       </div>
     </Modal>
   )

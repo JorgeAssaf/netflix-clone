@@ -13,7 +13,7 @@ const MovieList: FC<MovieListProps> = async ({ title }) => {
 
   const movies = await getMovies()
   return (
-    <div className="px-4 md:px-12 mt-4 mb-24 space-y-8">
+    <div className="px-4 md:px-12 mt-4  space-y-8">
       <div>
         <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">{title}</p>
         <div className="grid lg:grid-cols-4 md:grid-cols-2  grid-cols-1 gap-5">
