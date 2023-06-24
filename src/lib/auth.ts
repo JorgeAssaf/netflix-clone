@@ -5,7 +5,6 @@ import { NextAuthOptions } from 'next-auth'
 import prisma from '@/lib/prisma'
 import { compare } from 'bcrypt'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { error } from 'console'
 
 export const authOptions: NextAuthOptions = {
   providers: [
