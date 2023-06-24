@@ -2,29 +2,29 @@
 import { useRouter } from 'next/navigation'
 import { useMovie } from '@/hooks/useMovie'
 import { ArrowLeft } from 'lucide-react'
-import { Metadata, ResolvingMetadata } from 'next'
+// import { Metadata, ResolvingMetadata } from 'next'
 
-interface Props {
-  params: { movieId: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
+// interface Props {
+//   params: { movieId: string }
+//   searchParams: { [key: string]: string | string[] | undefined }
+// }
 
-export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent?: ResolvingMetadata
-): Promise<Metadata> {
-  // read route params
-  const movieId = params.movieId
-  console.log(movieId)
-  // fetch data
-  const movie = await fetch(`netflix-clone-tau-opal.vercel.app/api/movies/${movieId}`)
-  const res = await movie.json()
-  console.log(res)
+// export async function generateMetadata(
+//   { params, searchParams }: Props,
+//   parent?: ResolvingMetadata
+// ): Promise<Metadata> {
+//   // read route params
+//   const movieId = params.movieId
+//   console.log(movieId)
+//   // fetch data
+//   const movie = await fetch(`netflix-clone-tau-opal.vercel.app/api/movies/${movieId}`)
+//   const res = await movie.json()
+//   console.log(res)
 
-  return {
-    title: res?.title || 'Movie'
-  }
-}
+//   return {
+//     title: res?.title || 'Movie'
+//   }
+// }
 
 
 const Watch = ({ params: { movieId } }: { params: { movieId: string } }) => {
