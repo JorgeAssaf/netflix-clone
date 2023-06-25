@@ -21,7 +21,7 @@ const Banner = async () => {
   const data = await getRandom()
 
   return (
-    <div className='h-[600px] w-full text-white'>
+    <div className='md:h-[700px] h-[600px] w-full text-white'>
       <div className='absolute w-full  bg-gradient-to-r from-black'></div>
       <video
         poster={data?.thumbnailUrl}
@@ -33,7 +33,7 @@ const Banner = async () => {
         loop
         muted
       />
-      <div className='absolute top-[20%] w-full space-y-3 p-4 md:p-8'>
+      <div className='absolute top-[25%] w-full space-y-3 p-4 md:p-8'>
         <h1 className='text-4xl font-bold md:text-6xl'>{data?.title}</h1>
         <div className=''></div>
         <p className=' text-sm text-gray-400'>

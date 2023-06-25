@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { ChevronDownIcon, PlayIcon } from 'lucide-react'
 import { MovieInterface } from '@/types/movies'
@@ -43,6 +43,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies: data }) => {
         absolute
         top-0
         z-10
+        h-full
         w-full
         scale-0
         items-center
@@ -50,7 +51,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies: data }) => {
         transition
         duration-200
         delay-300
-        group-hover:-translate-y-[6vw]
+        group-hover:-translate-y-[11vw]
         group-hover:translate-x-[1px]
         group-hover:scale-110
         group-hover:opacity-100

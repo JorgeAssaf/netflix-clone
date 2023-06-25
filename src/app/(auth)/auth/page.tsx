@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation'
 
 import Input from '@/components/Input'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 const Auth = () => {
   const params = useSearchParams()
@@ -57,7 +58,13 @@ const Auth = () => {
     <div className="absolute h-full w-full bg-[url('/hero.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
       <div className='h-full w-full bg-black lg:bg-opacity-50'>
         <nav className='px-12 py-5'>
-          <img src='/logo.png' className='h-12' alt='Logo' />
+          <Image
+            src='/logo.png'
+            width={150}
+            height={50}
+            alt='logo'
+            className='w-28 md:w-36'
+          />
         </nav>
         <div className='flex justify-center'>
           <div className='mt-2 w-full self-center rounded-md bg-black bg-opacity-70 px-16 py-16 lg:w-2/5 lg:max-w-md'>
@@ -93,6 +100,7 @@ const Auth = () => {
             </div>
             <Button
               variant='netflix'
+              className='mt-10'
               size={variant === 'login' ? 'full' : 'default'}
               onClick={variant === 'login' ? login : register}
             >

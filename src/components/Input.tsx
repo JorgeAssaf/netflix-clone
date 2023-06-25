@@ -1,6 +1,4 @@
-import * as React from 'react'
-
-interface InputProps extends React.HTMLProps<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string
   onChange: any
   value: string
@@ -8,10 +6,14 @@ interface InputProps extends React.HTMLProps<HTMLInputElement> {
   type?: string
 }
 
-const Input: React.FC<InputProps> = (
-  { id, onChange, value, label, type },
+const Input: React.FC<InputProps> = ({
+  id,
+  onChange,
+  value,
+  label,
+  type,
   ...props
-) => {
+}) => {
   return (
     <div className='relative'>
       <input
@@ -28,14 +30,14 @@ const Input: React.FC<InputProps> = (
         appearance-none
         rounded-md
       bg-neutral-700
-      px-6
+        px-6
         pb-1
         pt-6
         text-white
         focus:outline-none
         focus:ring-0
         '
-        placeholder=''
+        placeholder=' '
         {...props}
       />
       <label
@@ -43,7 +45,7 @@ const Input: React.FC<InputProps> = (
         className='
         text-md 
         absolute
-      left-6
+        left-6
         top-4 
         z-10 
         origin-[0] 
