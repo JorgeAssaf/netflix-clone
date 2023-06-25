@@ -18,7 +18,6 @@ const getRandom = async () => {
 }
 
 const Banner = async () => {
-
   const data = await getRandom()
 
   return (
@@ -38,18 +37,21 @@ const Banner = async () => {
         <h1 className='text-4xl font-bold md:text-6xl'>{data?.title}</h1>
         <div className=''></div>
         <p className=' text-sm text-gray-400'>
-          Released: <span className='text-green-500'>New</span> | Rated: R |
-          Time: {data?.duration} | Genre: {data?.genre}
+          Released: <span className='text-green-500'>New</span> | Rated:{' '}
+          {data?.genre === 'Comedy' || 'Adventure' ? 'B' : 'A'} | Time:{' '}
+          {data?.duration} | Genre: {data?.genre}
         </p>
         <p className='w-full text-gray-200 md:max-w-[70%] lg:max-w-[70%] xl:max-w-[40%]'>
           {data?.description}
         </p>
         <div className='flex items-center'>
           <Button asChild variant={'ghost'}>
-            <Link href={`/movie/${data?.id}`} className={` border  border-gray-300 bg-gray-300 px-5 py-2 text-black`}>
-              <Info className='mr-2 inline-block' size={20} /><span>
-                More Info
-              </span>
+            <Link
+              href={`/movie/${data?.id}`}
+              className={` border  border-gray-300 bg-gray-300 px-5 py-2 text-black`}
+            >
+              <Info className='mr-2 inline-block' size={20} />
+              <span>More Info</span>
             </Link>
           </Button>
 

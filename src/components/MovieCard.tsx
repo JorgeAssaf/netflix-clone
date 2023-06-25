@@ -19,10 +19,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies: data }) => {
 
   return (
     <div className='col-span group relative bg-zinc-900  '>
-      <img
-        onClick={redirectToWatch}
+      <Image
+        onClick={() => router.push(`/movie/${data.id}`)}
         src={data.thumbnailUrl}
         alt='Movie'
+        width={300}
+        height={450}
         draggable={false}
         className='
           duration
@@ -55,10 +57,12 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies: data }) => {
         sm:visible
       '
       >
-        <img
-          onClick={redirectToWatch}
+        <Image
+          onClick={() => router.push(`/movie/${data.id}`)}
           src={data.thumbnailUrl}
           alt='Movie'
+          width={300}
+          height={450}
           draggable={false}
           className='
           duration
@@ -92,7 +96,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies: data }) => {
               <PlayIcon className='w-4 text-black lg:w-6' />
             </div>
             {/* <FavoriteButton movieId={data.id} /> */}
-            <div onClick={() => router.push(`/movie/${data.id}`)} className='group/item ml-auto flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-2 border-white transition hover:border-neutral-300 lg:h-10 lg:w-10'>
+            <div
+              onClick={() => router.push(`/movie/${data.id}`)}
+              className='group/item ml-auto flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border-2 border-white transition hover:border-neutral-300 lg:h-10 lg:w-10'
+            >
               <ChevronDownIcon className='w-4 text-white group-hover/item:text-neutral-300 lg:w-6' />
             </div>
           </div>
@@ -107,7 +114,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movies: data }) => {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 

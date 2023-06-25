@@ -8,9 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import Input from '@/components/Input'
 import { Button } from '@/components/ui/button'
 
-
 const Auth = () => {
-
   const params = useSearchParams()
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
@@ -21,7 +19,7 @@ const Auth = () => {
 
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) =>
-      currentVariant === 'login' ? 'register' : 'login',
+      currentVariant === 'login' ? 'register' : 'login'
     )
   }, [])
 
@@ -31,7 +29,7 @@ const Auth = () => {
         email,
         password,
         redirect: true,
-        callbackUrl: '/profiles',
+        callbackUrl: '/profiles'
       })
     } catch (error) {
       console.log(error)
@@ -46,7 +44,7 @@ const Auth = () => {
       await axios.post('/api/register', {
         email,
         name,
-        password,
+        password
       })
 
       login()
@@ -56,14 +54,14 @@ const Auth = () => {
   }, [email, name, password, login])
 
   return (
-    <div className="absolute h-full w-full bg-[url('/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
-      <div className='bg-black w-full h-full lg:bg-opacity-50'>
+    <div className="absolute h-full w-full bg-[url('/hero.jpg')] bg-cover bg-fixed bg-center bg-no-repeat">
+      <div className='h-full w-full bg-black lg:bg-opacity-50'>
         <nav className='px-12 py-5'>
           <img src='/logo.png' className='h-12' alt='Logo' />
         </nav>
         <div className='flex justify-center'>
-          <div className='bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full'>
-            <h2 className='text-white text-4xl mb-8 font-semibold'>
+          <div className='mt-2 w-full self-center rounded-md bg-black bg-opacity-70 px-16 py-16 lg:w-2/5 lg:max-w-md'>
+            <h2 className='mb-8 text-4xl font-semibold text-white'>
               {variant === 'login' ? 'Sign in' : 'Register'}
             </h2>
             <div className='flex flex-col gap-4'>
@@ -91,7 +89,7 @@ const Auth = () => {
                 onChange={(e: any) => setPassword(e.target.value)}
               />
 
-              {error ? <p className='text-red-500 text-sm'>{error}</p> : null}
+              {error ? <p className='text-sm text-red-500'>{error}</p> : null}
             </div>
             <Button
               variant='netflix'
@@ -100,23 +98,23 @@ const Auth = () => {
             >
               {variant === 'login' ? 'Login' : 'Sign up'}
             </Button>
-            <div className='flex flex-row items-center gap-4 mt-8 justify-center'>
+            <div className='mt-8 flex flex-row items-center justify-center gap-4'>
               <div
                 onClick={() => signIn('google', { callbackUrl: '/profiles' })}
-                className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'
+                className='flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white transition hover:opacity-80'
               ></div>
               <div
                 onClick={() => signIn('github', { callbackUrl: '/profiles' })}
-                className='w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition'
+                className='flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white transition hover:opacity-80'
               ></div>
             </div>
-            <p className='text-neutral-500 mt-12'>
+            <p className='mt-12 text-neutral-500'>
               {variant === 'login'
                 ? 'First time using Netflix?'
                 : 'Already have an account?'}
               <span
                 onClick={toggleVariant}
-                className='text-white ml-1 hover:underline cursor-pointer'
+                className='ml-1 cursor-pointer text-white hover:underline'
               >
                 {variant === 'login' ? 'Create an account' : 'Login'}
               </span>
