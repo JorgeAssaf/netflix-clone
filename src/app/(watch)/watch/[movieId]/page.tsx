@@ -1,7 +1,10 @@
 'use client'
+import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useMovie } from '@/hooks/useMovie'
 import { ArrowLeft } from 'lucide-react'
+import ReactHlsPlayer from 'react-hls-player'
+import { TheosPlayer } from '@aka_theos/react-hls-player'
 // import { Metadata, ResolvingMetadata } from 'next'
 
 // interface Props {
@@ -29,7 +32,7 @@ import { ArrowLeft } from 'lucide-react'
 
 const Watch = ({ params: { movieId } }: { params: { movieId: string } }) => {
   const router = useRouter()
-
+  const playerRef = useRef<HTMLVideoElement>(null)
   const { movie, isError, isLoading } = useMovie(movieId)
 
   if (isLoading) return <div>loading...</div>
@@ -46,12 +49,22 @@ const Watch = ({ params: { movieId } }: { params: { movieId: string } }) => {
           <span className='font-light'>Watching:</span> {movie?.title}
         </p>
       </nav>
-      <video
-        className='h-full w-full'
-        autoPlay
-        controls
-        src={movie?.videoUrl}
-      ></video>
+      {movie?.videoUrl.includes('.m3u8') ? (
+        <ReactHlsPlayer
+          playerRef={playerRef}
+          src={movie?.videoUrl}
+          autoPlay={false}
+          controls={true}
+          className='h-full w-full'
+        />
+      ) : (
+        <video
+          className='h-full w-full'
+          autoPlay
+          controls
+          src={movie?.videoUrl}
+        ></video>
+      )}
     </div>
   )
 }

@@ -7,7 +7,9 @@ const nextConfig = {
       'uhdtv.io',
       'mango.blender.org',
       'download.blender.org',
-      'lh3.googleusercontent.com'
+      'lh3.googleusercontent.com',
+      'images.pexels.com',
+      'bonusstage.mx'
     ]
   }
 }
