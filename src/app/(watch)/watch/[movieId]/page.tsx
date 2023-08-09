@@ -1,10 +1,11 @@
 'use client'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useMovie } from '@/hooks/useMovie'
 import { ArrowLeft } from 'lucide-react'
 import ReactHlsPlayer from 'react-hls-player'
-import { TheosPlayer } from '@aka_theos/react-hls-player'
+import videojs from 'video.js'
+import VideoPlayer from '@/components/video-player'
 // import { Metadata, ResolvingMetadata } from 'next'
 
 // interface Props {
@@ -29,15 +30,10 @@ import { TheosPlayer } from '@aka_theos/react-hls-player'
 //   }
 // }
 
-
 const Watch = ({ params: { movieId } }: { params: { movieId: string } }) => {
   const router = useRouter()
-  const playerRef = useRef<HTMLVideoElement>(null)
   const { movie, isError, isLoading } = useMovie(movieId)
-
-  if (isLoading) return <div>loading...</div>
-  if (isError) return <div>error...</div>
-
+  console.log(movie?.videoUrl);
   return (
     <div className='h-screen w-screen bg-black'>
       <nav className='fixed z-10 flex w-full flex-row items-center gap-8 bg-black bg-opacity-70 p-4'>
@@ -50,20 +46,9 @@ const Watch = ({ params: { movieId } }: { params: { movieId: string } }) => {
         </p>
       </nav>
       {movie?.videoUrl.includes('.m3u8') ? (
-        <ReactHlsPlayer
-          playerRef={playerRef}
-          src={movie?.videoUrl}
-          autoPlay={false}
-          controls={true}
-          className='h-full w-full'
-        />
+        <VideoPlayer url={movie?.videoUrl} />
       ) : (
-        <video
-          className='h-full w-full'
-          autoPlay
-          controls
-          src={movie?.videoUrl}
-        ></video>
+        <video src={movie?.videoUrl} controls className='h-full w-full'></video>
       )}
     </div>
   )
